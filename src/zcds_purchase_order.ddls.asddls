@@ -3,7 +3,7 @@
 @AbapCatalog.preserveKey: true
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Purchase Order Data'
-define view zCDS_PURCHASE_ORDER
+define view ZCDS_PURCHASE_ORDER
   as select from ekko
   association [1..*] to ekpo as _zpoitem on $projection.ebeln = _zpoitem.ebeln
 {
