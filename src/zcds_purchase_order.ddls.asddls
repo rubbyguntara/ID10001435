@@ -11,10 +11,10 @@ define view ZCDS_PURCHASE_ORDER
       ekorg,
       lifnr,
       //    Exposed Association
-      //    _zpoitem // Make association public
+      _zpoitem // Make association public
 
       //    ad hoc association
-      _zpoitem.ebelp,
-      _zpoitem.matnr,
-      _zpoitem.werks
+      //      _zpoitem.ebelp,
+      //      _zpoitem.matnr,
+      //      _zpoitem.werks
 }

@@ -3,11 +3,11 @@
 {
 "FROM":
 [
-"EKKO"
+"LFA1"
 ],
 "ASSOCIATED":
 [
-"EKPO"
+"ZCDS_PURCHASE_ORDER"
 ],
 "BASE":
 [],
