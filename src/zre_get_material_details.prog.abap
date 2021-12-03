@@ -18,3 +18,5 @@ START-OF-SELECTION.
     IMPORTING
       ex_mara  = wa_mara.
   WRITE :/ wa_mara-matnr, wa_mara-mtart, wa_mara-meins.
+
+  WRITE 'test'.
