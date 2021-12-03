@@ -16,6 +16,9 @@ public section.
   types:
     tt_mara TYPE TABLE OF ty_mara .
 
+  data LANGUAGE type SPRAS .
+  class-data MAT_TYPE type MTART .
+
   events NO_MATERIAL .
   events MATERIAL_NOT_FOUND .
 
@@ -38,6 +41,15 @@ public section.
     for event NO_MATERIAL of ZCL_SAPN_MATERIALS .
   methods MATERIAL_NOT_FOUND_HANDLER
     for event MATERIAL_NOT_FOUND of ZCL_SAPN_MATERIALS .
+  methods CONSTRUCTOR
+    importing
+      !IM_SPRAS type MAKT-SPRAS .
+  methods GET_MATERIAL_DESCRIPTION
+    importing
+      !IM_MATNR type MARA-MATNR
+    exporting
+      !EX_MAKT type MAKT .
+  class-methods CLASS_CONSTRUCTOR .
 protected section.
 private section.
 ENDCLASS.
@@ -88,5 +100,24 @@ CLASS ZCL_SAPN_MATERIALS IMPLEMENTATION.
 
   METHOD no_material_handler.
     WRITE:/ 'No material entered'.
+  ENDMETHOD.
+
+
+  METHOD class_constructor.
+*Set default material TYPE as fert
+    mat_type = 'FERT'.
+  ENDMETHOD.
+
+
+  METHOD constructor.
+    language = im_spras.
+  ENDMETHOD.
+
+
+  METHOD get_material_description.
+    SELECT * FROM makt INTO ex_makt
+      WHERE matnr = im_matnr
+          AND spras = language. "LANGUAGE IS THE ATTRIBUTE DEFINED IN METHOD
+    ENDSELECT.
   ENDMETHOD.
 ENDCLASS.
